@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:isaprog_mainsite/pages/about_page.dart';
-import 'package:isaprog_mainsite/pages/contact_page.dart';
-import 'package:isaprog_mainsite/pages/home_page.dart';
+import 'package:isaprog_mainsite/desktop_pages/desktop_about_page.dart';
+import 'package:isaprog_mainsite/desktop_pages/desktop_contact_page.dart';
+import 'package:isaprog_mainsite/desktop_pages/desktop_home_page.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class DesktopMainPage extends StatefulWidget {
+  const DesktopMainPage({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<DesktopMainPage> createState() => _DesktopMainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _DesktopMainPageState extends State<DesktopMainPage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = const [HomePage(), AboutPage(), ContactPage()];
+  final List<Widget> _pages = const [
+    DesktopHomePage(),
+    DesktopAboutPage(),
+    DesktopContactPage(),
+  ];
 
   void _onMenuTap(int index) {
     setState(() => _selectedIndex = index);
