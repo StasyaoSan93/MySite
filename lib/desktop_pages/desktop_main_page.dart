@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:isaprog_mainsite/desktop_pages/desktop_about_page.dart';
-import 'package:isaprog_mainsite/desktop_pages/desktop_contact_page.dart';
 import 'package:isaprog_mainsite/desktop_pages/desktop_home_page.dart';
 
 class DesktopMainPage extends StatefulWidget {
@@ -13,11 +12,7 @@ class DesktopMainPage extends StatefulWidget {
 class _DesktopMainPageState extends State<DesktopMainPage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = const [
-    DesktopHomePage(),
-    DesktopAboutPage(),
-    DesktopContactPage(),
-  ];
+  final List<Widget> _pages = const [DesktopHomePage(), DesktopAboutPage()];
 
   void _onMenuTap(int index) {
     setState(() => _selectedIndex = index);
@@ -29,9 +24,8 @@ class _DesktopMainPageState extends State<DesktopMainPage> {
       appBar: AppBar(
         title: const Text("StasyaoSan - Main Site"),
         actions: [
-          _MenuButton("Главная", 0, _selectedIndex, _onMenuTap),
-          _MenuButton("О нас", 1, _selectedIndex, _onMenuTap),
-          _MenuButton("Контакты", 2, _selectedIndex, _onMenuTap),
+          _MenuButton("Main", 0, _selectedIndex, _onMenuTap),
+          _MenuButton("Info", 1, _selectedIndex, _onMenuTap),
         ],
       ),
       body: IndexedStack(index: _selectedIndex, children: _pages),
