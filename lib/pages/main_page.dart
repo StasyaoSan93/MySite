@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:isaprog_mainsite/desktop_pages/desktop_about_page.dart';
-import 'package:isaprog_mainsite/desktop_pages/desktop_home_page.dart';
+import 'package:isaprog_mainsite/pages/about_page.dart';
+import 'package:isaprog_mainsite/pages/home_page.dart';
 
-class DesktopMainPage extends StatefulWidget {
-  const DesktopMainPage({super.key});
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<DesktopMainPage> createState() => _DesktopMainPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _DesktopMainPageState extends State<DesktopMainPage> {
+class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = const [DesktopHomePage(), DesktopAboutPage()];
+  final List<Widget> _pages = const [HomePage(), AboutPage()];
 
   void _onMenuTap(int index) {
     setState(() => _selectedIndex = index);
@@ -21,8 +21,9 @@ class _DesktopMainPageState extends State<DesktopMainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text("StasyaoSan - Main Site"),
+        title: Text("ISAProg"),
         actions: [
           _MenuButton("Main", 0, _selectedIndex, _onMenuTap),
           _MenuButton("Info", 1, _selectedIndex, _onMenuTap),
@@ -52,8 +53,9 @@ class _MenuButton extends StatelessWidget {
         style: TextStyle(
           color: isActive
               ? Theme.of(context).colorScheme.primary
-              : Colors.grey[700],
-          fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+              : Theme.of(context).colorScheme.secondary,
+          fontSize: 20,
+          fontWeight: isActive ? FontWeight.w500 : FontWeight.w400,
         ),
       ),
     );

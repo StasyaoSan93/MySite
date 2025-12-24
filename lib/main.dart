@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:isaprog_mainsite/desktop_pages/desktop_main_page.dart';
-import 'package:isaprog_mainsite/mobile_pages/mobile_main_page.dart';
+import 'package:isaprog_mainsite/core/providers/main_provider.dart';
+import 'package:isaprog_mainsite/pages/main_page.dart';
+import 'package:isaprog_mainsite/theme/main_theme.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyWebsite());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => MainProvider()..loadData(),
+      child: MyWebsite(),
+    ),
+  );
 }
 
 class MyWebsite extends StatelessWidget {
@@ -12,18 +19,10 @@ class MyWebsite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'StasyaoSan - Main Page',
+      title: 'StasyaoSan - Main Site',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(colorSchemeSeed: Colors.indigo, useMaterial3: true),
-      home: LayoutBuilder(
-        builder: (context, constraints) {
-          if (constraints.maxWidth >= 550) {
-            return DesktopMainPage();
-          } else {
-            return MobileMainPage();
-          }
-        },
-      ),
+      theme: MainTheme.mainTheme,
+      home: MainPage(),
     );
   }
 }
