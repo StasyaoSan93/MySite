@@ -35,6 +35,23 @@
 </head>
 
 <body>
+  <script>
+    async function checkUpdate() {
+      try {
+        const response = await fetch('version.json', { cache: "no-store" });
+        const data = await response.json();
+        const serverVersion = data.version;
+        const localVersion = localStorage.getItem('version');
+
+        if (localVersion != serverVersion.toString()) {
+          localStorage.setItem('version', serverVersion.toString());
+          location.reload(true); // принудительная перезагрузка
+        }
+      } catch (_) { }
+    }
+
+    checkUpdate();
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 
