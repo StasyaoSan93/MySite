@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:isaprog_mainsite/core/providers/main_provider.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +27,15 @@ class AboutPage extends StatelessWidget {
                           child: SizedBox(
                             height: 300,
                             width: 300,
-                            child: Image.asset('assets/images/701899937.jpeg'),
+                            child: CachedNetworkImage(
+                              imageUrl:
+                                  'https://isaprog.com/downloadfiles/myPhoto.jpeg',
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) =>
+                                  Center(child: CircularProgressIndicator()),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.image, size: 125),
+                            ),
                           ),
                         ),
                         Divider(),
