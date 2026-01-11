@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isaprog_mainsite/core/app_config.dart';
 import 'package:isaprog_mainsite/pages/about_page.dart';
 import 'package:isaprog_mainsite/pages/home_page.dart';
 
@@ -23,10 +24,10 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text("ISAProg"),
+        title: Text(AppConfig.appHeader),
         actions: [
-          _MenuButton("Main", 0, _selectedIndex, _onMenuTap),
-          _MenuButton("Info", 1, _selectedIndex, _onMenuTap),
+          _MenuButton(AppConfig.mainText, 0, _selectedIndex, _onMenuTap),
+          _MenuButton(AppConfig.infoText, 1, _selectedIndex, _onMenuTap),
         ],
       ),
       body: IndexedStack(index: _selectedIndex, children: _pages),

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:isaprog_mainsite/core/app_config.dart';
 import 'package:isaprog_mainsite/core/models/data_responce_model.dart';
 import 'package:isaprog_mainsite/core/providers/main_provider.dart';
 import 'package:isaprog_mainsite/core/utils/toast_helper.dart';
@@ -78,12 +79,12 @@ class HomePage extends StatelessWidget {
                                 mode: LaunchMode.externalApplication,
                               );
                             } else {
-                              ToastHelper.show('Ошибка открытия страницы');
+                              ToastHelper.show(AppConfig.errorOpenPageText);
                             }
                           }
                         },
                         child: const Text(
-                          'Перейти',
+                          AppConfig.goButtonText,
                           style: TextStyle(color: Colors.grey, fontSize: 14),
                         ),
                       ),
